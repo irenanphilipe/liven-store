@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useQuery } from 'react-query';
 //componentes
 import Item from '../item/Item';
+import Cart from '../cart/Cart';
 import { getProducts, CartItemType } from '../../api/Api';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Grid from '@material-ui/core/Grid';
@@ -19,8 +20,11 @@ function Home() {
   );
   console.log(data);
   
-  const getTotalItems = (items: CartItemType[]) => null
+  const getTotalItems = (items: CartItemType[]) => 
+    items.reduce((acc: number, item) => acc + item.amount, 0);
+  
   const handleAddToCart = (clickedItem: CartItemType) => null;
+  const handleRemoveFromCart = () => null;
 
   if (isLoading) return <LinearProgress />;
   if (error) return <div>Algo deu errado...</div>;
@@ -28,7 +32,11 @@ function Home() {
   return(
     <Wrapper>
       <Drawer anchor='right' open={cartOpen} onClose={() => setCartOpen(false)}>
-        Carrinho aqui
+        <Cart 
+          cartItems={cartItems} 
+          addToCart={handleAddToCart}
+          removeFromCart={handleRemoveFromCart}
+        />
       </Drawer>
       <StyledButton onClick={() => setCartOpen(true)}>
         <Badge badgeContent={getTotalItems(cartItems)} color='error'>
