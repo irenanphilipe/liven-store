@@ -1,8 +1,9 @@
-import Button from '@material-ui/core/Button';
-//types
+//tipos
 import { CartItemType } from '../../api/Api';
-//styles
+//estilos
 import { Wrapper } from './Item.styles';
+//componentes
+import Button from '@material-ui/core/Button';
 
 type Props = {
   item: CartItemType;
@@ -17,7 +18,7 @@ const Item: React.FC<Props> = ({ item, handleAddToCart }) => (
       <h3>${item.price}</h3>
     </div>
     <Button onClick={() => handleAddToCart(item)}>
-      Add to cart
+      Adicionar ao Carrinho
     </Button>
   </Wrapper>
 );

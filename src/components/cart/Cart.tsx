@@ -1,7 +1,8 @@
+//componentes
 import CartItem from "../cartItem/CartItem";
-
+//estilos
 import { Wrapper } from './Cart.styles';
-
+//tipos
 import { CartItemType } from "../../api/Api";
 
 type Props = {

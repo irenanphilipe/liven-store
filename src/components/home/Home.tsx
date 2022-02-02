@@ -3,13 +3,16 @@ import { useQuery } from 'react-query';
 //componentes
 import Item from '../item/Item';
 import Cart from '../cart/Cart';
-import { getProducts, CartItemType } from '../../api/Api';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import Grid from '@material-ui/core/Grid';
-import { Wrapper, StyledButton } from './Home.styles';
 import Drawer from '@material-ui/core/Drawer';
 import Badge from '@material-ui/core/Badge';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import Grid from '@material-ui/core/Grid';
+//estilos
+import { Wrapper, StyledButton } from './Home.styles';
+//tipos
+import { getProducts, CartItemType } from '../../api/Api';
+
 
 function Home() {
   const [ cartOpen, setCartOpen ] = useState(false);
@@ -18,7 +21,7 @@ function Home() {
     'products',
     getProducts
   );
-  
+  //Total dos itens
   const getTotalItems = (items: CartItemType[]) => 
     items.reduce((acc: number, item) => acc + item.amount, 0);
   
